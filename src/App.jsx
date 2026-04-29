@@ -973,100 +973,93 @@ export default function App() {
             </div>
           </section>
 
-          {/* 算力经济 */}
-          <section id="tokenomics" className="py-24 bg-[#0a0a0a] border-y border-white/5 relative overflow-hidden">
-            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] pointer-events-none"></div>
-            <div className="absolute top-[10%] right-[10%] w-[400px] h-[400px] bg-[#00b4ff]/10 blur-[120px] rounded-full pointer-events-none"></div>
+          {/* 算力经济模型 (Tokenomics Flywheel) - 极致财富张力重构 */}
+      <section id="tokenomics" className="py-32 relative overflow-hidden bg-[#020202]">
+        {/* 背景金矿级极光特效 */}
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-yellow-500/10 blur-[150px] rounded-full pointer-events-none"></div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-              <div className="text-center mb-16">
-                <div className="inline-block px-3 py-1 bg-[#00b4ff]/10 border border-[#00b4ff]/20 text-[#00b4ff] text-xs font-bold uppercase tracking-widest rounded mb-6">
-                  算力经济
-                </div>
-                <h2 className="text-3xl md:text-5xl font-black text-white mb-4">从买软件到<strong className="text-[#00b4ff]">拥有算力工厂</strong></h2>
-                <p className="text-gray-400 max-w-2xl mx-auto">
-                  每一台 YUANJI 终端不仅是生产力工具，更是物理世界中的生息资产节点。
-                </p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+          <div className="flex flex-col lg:flex-row gap-20 items-center">
+
+            {/* 左侧：财富引擎主张与跳动的数据板 */}
+            <div className="w-full lg:w-[45%]">
+              <div className="inline-block px-4 py-1.5 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 text-yellow-400 text-xs font-bold uppercase tracking-widest rounded-full mb-8 shadow-[0_0_15px_rgba(234,179,8,0.2)]">
+                算力经济飞轮
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-                <div className="p-8 bg-gradient-to-br from-[#0a0a0a] to-[#050505] border border-white/10 rounded-3xl hover:border-[#00b4ff]/40 transition-all duration-500 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-[#00b4ff]/5 blur-3xl"></div>
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="p-2.5 bg-[#00b4ff]/10 rounded-xl border border-[#00b4ff]/20">
-                      <Coins className="w-6 h-6 text-[#00b4ff]" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-black text-white">HTK 节点收益</h3>
-                      <p className="text-xs text-gray-500">Hardware Token Kernel</p>
-                    </div>
-                  </div>
-                  <div className="bg-black/30 border border-white/5 rounded-2xl p-6 mb-6">
-                    <div className="flex justify-between items-end mb-4">
-                      <span className="text-sm text-gray-500">实时算力产出 (UTC)</span>
-                      <div className="flex items-center gap-1.5">
-                        <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_#22c55e] animate-pulse"></div>
-                        <span className="text-xs text-green-400 font-mono">LIVE</span>
-                      </div>
-                    </div>
-                    <div className="text-5xl font-black text-white font-mono tabular-nums">
-                      {liveHtkYield.toFixed(4)}
-                      <span className="text-lg text-[#00b4ff] ml-2">HTK/h</span>
-                    </div>
-                    <div className="mt-4 h-20 bg-gradient-to-b from-[#00b4ff]/10 to-transparent rounded-lg flex items-center justify-center">
-                      <Activity className="w-8 h-8 text-[#00b4ff]/50 animate-pulse" />
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="p-4 bg-white/[0.02] border border-white/5 rounded-xl text-center">
-                      <div className="text-xs text-gray-500 mb-1">全网节点数</div>
-                      <div className="text-xl font-black text-white font-mono">12,847</div>
-                    </div>
-                    <div className="p-4 bg-white/[0.02] border border-white/5 rounded-xl text-center">
-                      <div className="text-xs text-gray-500 mb-1">年化收益率</div>
-                      <div className="text-xl font-black text-[#00b4ff] font-mono">18.5%</div>
-                    </div>
-                  </div>
-                </div>
+              <h2 className="text-4xl md:text-6xl font-black text-white mb-6 leading-[1.1]">
+                这是一台<br/>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-400 to-orange-500 drop-shadow-[0_0_20px_rgba(250,204,21,0.4)]">会赚钱的印钞机</span>
+              </h2>
+              <p className="text-lg text-gray-400 mb-10 leading-relaxed font-medium">
+                最好的商业模式，是你在睡觉时资产仍在飙升。别人买的是消耗型硬件，你买的是一个永不休眠的算力矿机。一人胜一司，省就是赚。
+              </p>
 
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { icon: <Database className="w-5 h-5" />, title: '算力质押', desc: '质押 HTK 获取网络算力权重' },
-                    { icon: <Zap className="w-5 h-5" />, title: '任务分红', desc: '完成 AI 推理任务获代币奖励' },
-                    { icon: <Lock className="w-5 h-5" />, title: '治理投票', desc: 'HTK 持有者参与网络治理决策' },
-                    { icon: <Globe className="w-5 h-5" />, title: '跨链桥接', desc: '多链互通，资产自由流转' },
-                  ].map((item, i) => (
-                    <div key={i} className="p-5 bg-gradient-to-br from-[#0a0a0a] to-[#050505] border border-white/10 rounded-2xl hover:border-[#00b4ff]/30 hover:-translate-y-1 transition-all duration-300">
-                      <div className="p-2 bg-[#00b4ff]/10 rounded-lg w-fit mb-3 text-[#00b4ff]">
-                        {item.icon}
-                      </div>
-                      <h4 className="text-white font-bold text-sm mb-1">{item.title}</h4>
-                      <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              {/* 实时挖矿收益看板 (视觉锚点) */}
+              <div className="p-[2px] rounded-2xl bg-gradient-to-r from-yellow-500/40 via-orange-500/40 to-[#00b4ff]/40 shadow-[0_0_30px_rgba(234,179,8,0.15)] transform hover:scale-[1.02] transition-transform duration-500">
+                <div className="bg-[#0a0a0a] rounded-xl p-6 relative overflow-hidden">
+                   {/* 面板内部泛光 */}
+                   <div className="absolute -top-10 -right-10 w-32 h-32 bg-yellow-500/20 blur-2xl rounded-full"></div>
 
-              <div className="p-8 bg-gradient-to-br from-[#0a0a0a] to-[#050505] border border-white/10 rounded-3xl">
-                <h3 className="text-xl font-black text-white mb-8 text-center">HTK 代币分配</h3>
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
-                  {[
-                    { label: '节点挖矿', pct: '40%', color: 'bg-[#00b4ff]', shadow: 'shadow-[0_0_15px_rgba(0,180,255,0.5)]' },
-                    { label: '生态激励', pct: '25%', color: 'bg-purple-400', shadow: 'shadow-[0_0_15px_rgba(168,85,247,0.5)]' },
-                    { label: '团队与研发', pct: '15%', color: 'bg-cyan-400', shadow: 'shadow-[0_0_15px_rgba(34,211,238,0.5)]' },
-                    { label: '战略储备', pct: '12%', color: 'bg-green-400', shadow: 'shadow-[0_0_15px_rgba(34,197,94,0.5)]' },
-                    { label: '社区空投', pct: '8%', color: 'bg-yellow-400', shadow: 'shadow-[0_0_15px_rgba(250,204,21,0.5)]' },
-                  ].map((item, i) => (
-                    <div key={i} className="space-y-3">
-                      <div className={`w-full h-3 ${item.color} rounded-full ${item.shadow}`}></div>
-                      <div className="text-2xl font-black text-white">{item.pct}</div>
-                      <div className="text-xs text-gray-500">{item.label}</div>
-                    </div>
-                  ))}
+                   <div className="text-sm text-gray-400 mb-3 flex items-center gap-2 font-mono">
+                     <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_#22c55e]"></div>
+                     全网节点实时挖矿收益监控
+                   </div>
+
+                   <div className="flex items-baseline gap-3 mb-2">
+                      <span className="text-5xl font-black text-white tracking-tight drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+                        {liveHtkYield.toFixed(4)}
+                      </span>
+                      <span className="text-xl font-bold text-yellow-500 drop-shadow-[0_0_5px_rgba(234,179,8,0.8)]">HTK</span>
+                   </div>
+
+                   <div className="mt-5 pt-4 border-t border-white/10 flex justify-between items-center text-xs font-mono">
+                      <span className="text-gray-500">当前节点算力 (Hashrate)</span>
+                      <span className="text-[#00b4ff] bg-[#00b4ff]/10 px-2 py-1 rounded border border-[#00b4ff]/20">14.2 TH/s</span>
+                   </div>
                 </div>
               </div>
             </div>
-          </section>
+
+            {/* 右侧：四大金库级核心机制卡片 */}
+            <div className="w-full lg:w-[55%] grid grid-cols-1 sm:grid-cols-2 gap-6 relative">
+              {/* 中央发光连接点 (纯视觉) */}
+              <div className="hidden sm:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-yellow-500/10 rounded-full blur-xl z-0"></div>
+
+              {[
+                { icon: <Zap className="w-7 h-7 text-yellow-400" />, title: "开机即收益", desc: "设备在线即自动接入底层算力网络，财富从按下开机键那一刻开始无感累积。", color: "yellow" },
+                { icon: <TrendingUp className="w-7 h-7 text-orange-400" />, title: "使用即加成", desc: "本地调用 AI 模型即可获得额外算力奖励乘数，HTK 越用越多，越算越赚。", color: "orange" },
+                { icon: <Activity className="w-7 h-7 text-[#00b4ff]" />, title: "HTK 抵消耗", desc: "产出的 HTK 直接无缝抵扣高阶 AI 服务的算力消耗，彻底实现免费使用的闭环。", color: "blue" },
+                { icon: <Coins className="w-7 h-7 text-yellow-500" />, title: "资产可变现", desc: "完全映射 Web3 链上自由交易，资产流动性与未来增值空间由你完全掌控。", color: "yellow" },
+              ].map((item, i) => (
+                <div key={i} className={`group relative p-[1px] rounded-2xl bg-gradient-to-b from-white/10 to-transparent hover:from-${item.color}-500/50 hover:to-transparent transition-all duration-500 hover:-translate-y-1 z-10`}>
+                   {/* 内部毛玻璃金库质感 */}
+                   <div className="relative h-full bg-[#0d0d0d]/90 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-white/5 flex flex-col overflow-hidden">
+                       {/* 悬浮内发光 */}
+                       <div className={`absolute -top-10 -right-10 w-24 h-24 bg-${item.color}-500/10 rounded-full blur-2xl group-hover:bg-${item.color}-500/20 transition-colors duration-500`}></div>
+
+                       <div className={`w-14 h-14 rounded-xl flex items-center justify-center border mb-6 group-hover:scale-110 transition-transform duration-500 shadow-lg ${
+                         item.color === 'yellow' ? 'bg-yellow-500/10 border-yellow-500/30 shadow-yellow-500/20' :
+                         item.color === 'orange' ? 'bg-orange-500/10 border-orange-500/30 shadow-orange-500/20' :
+                         'bg-[#00b4ff]/10 border-[#00b4ff]/30 shadow-[#00b4ff]/20'
+                       }`}>
+                          {item.icon}
+                       </div>
+
+                       <div>
+                         <h4 className="text-xl font-bold text-white mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all">{item.title}</h4>
+                         <p className="text-sm text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors">{item.desc}</p>
+                       </div>
+                   </div>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+      </section>
 
           {/* CTA */}
           <section className="py-24 relative border-t border-white/5">
