@@ -611,7 +611,7 @@ export default function App() {
             </div>
           </section>
 
-          {/* 行业生态 */}
+{/* 行业生态 (Ecosystem / Vertical Tracks) */}
           <section id="ecosystem" className="py-24 bg-[#0a0a0a] border-y border-white/5">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h2 className="text-3xl md:text-4xl font-black text-white mb-4">跨行业的 AI 能力网络</h2>
@@ -622,55 +622,120 @@ export default function App() {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {[
                   {
+                    id: "HUB-Q1",
                     icon: <BarChart4 className="w-8 h-8 text-[#00b4ff]" />,
-                    title: '量化交易',
-                    desc: '专属赛道深度定制，内置垂直领域顶尖认知体系与高频决策逻辑。',
-                    metricLabel: '处理并发',
-                    metric: '1.2M req/s',
-                    barPct: '85%',
-                    color: '#00b4ff',
-                    borderColor: 'hover:border-[#00b4ff]/50',
-                    glow: 'group-hover:shadow-[0_0_30px_rgba(0,180,255,0.3)]',
+                    title: "量化交易",
+                    desc: "专属赛道深度定制，内置垂直领域顶尖认知体系与高频决策逻辑。",
+                    metric: "处理并发",
+                    value: "1.2M req/s",
+                    themeColor: "from-[#00b4ff]/20 to-transparent",
+                    borderColor: "hover:border-[#00b4ff]/50",
+                    ringColor: "border-[#00b4ff]/30",
+                    textColor: "text-[#00b4ff]",
+                    accentBg: "bg-[#00b4ff]",
+                    accentShadow: "shadow-[0_0_8px_#00b4ff]"
                   },
                   {
+                    id: "HUB-M2",
                     icon: <Target className="w-8 h-8 text-purple-400" />,
-                    title: '营销获客',
-                    desc: '封装全域增长专家模型，自主完成用户画像分析与触达策略生成。',
-                    metricLabel: '人群画像解析',
-                    metric: '50k+/h',
-                    barPct: '70%',
-                    color: '#a855f7',
-                    borderColor: 'hover:border-purple-500/50',
-                    glow: 'group-hover:shadow-[0_0_30px_rgba(168,85,247,0.3)]',
+                    title: "营销获客",
+                    desc: "封装全域增长专家模型，自主完成用户画像分析与触达策略生成。",
+                    metric: "人群画像解析",
+                    value: "50k+/h",
+                    themeColor: "from-purple-500/20 to-transparent",
+                    borderColor: "hover:border-purple-500/50",
+                    ringColor: "border-purple-500/30",
+                    textColor: "text-purple-400",
+                    accentBg: "bg-purple-400",
+                    accentShadow: "shadow-[0_0_8px_#a855f7]"
                   },
                   {
+                    id: "HUB-H3",
                     icon: <Dna className="w-8 h-8 text-green-400" />,
-                    title: '大健康',
-                    desc: '融合医学生物知识图谱，为精准健康管理与药物研发提供 AI 算力底座。',
-                    metricLabel: '生物序列分析',
-                    metric: '实时推理',
-                    barPct: '60%',
-                    color: '#22c55e',
-                    borderColor: 'hover:border-green-500/50',
-                    glow: 'group-hover:shadow-[0_0_30px_rgba(34,197,94,0.3)]',
+                    title: "大健康",
+                    desc: "私有化医疗知识图谱，构建绝对安全的数据隔离墙与健康精算网络。",
+                    metric: "数据隔离率",
+                    value: "99.99%",
+                    themeColor: "from-green-500/20 to-transparent",
+                    borderColor: "hover:border-green-500/50",
+                    ringColor: "border-green-500/30",
+                    textColor: "text-green-400",
+                    accentBg: "bg-green-400",
+                    accentShadow: "shadow-[0_0_8px_#22c55e]"
                   },
-                ].map((item, i) => (
-                  <div key={i} className={`p-8 bg-gradient-to-b from-[#0a0a0a] to-[#050505] border border-white/10 rounded-3xl ${item.borderColor} hover:-translate-y-2 transition-all duration-500 group relative overflow-hidden text-left`}>
-                    <div className={`absolute inset-0 bg-gradient-to-b opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none`} style={{ background: `linear-gradient(to bottom, ${item.color}20, transparent)` }}></div>
-                    <div className={`w-16 h-16 mb-6 rounded-2xl bg-[#0a0a0a] border flex items-center justify-center relative ${item.glow} transition-shadow`} style={{ borderColor: `${item.color}30` }}>
-                      {item.icon}
+                ].map((track, i) => (
+                  <div key={i} className={`group relative p-8 bg-[#050505] rounded-3xl border border-white/10 ${track.borderColor} transition-all duration-500 hover:-translate-y-2 overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.5)] flex flex-col text-left`}>
+
+                    {/* 背景光晕扩散 */}
+                    <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-to-bl ${track.themeColor} rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none`}></div>
+
+                    {/* 硬件中枢状态栏 */}
+                    <div className="flex justify-between items-center mb-8 pb-4 border-b border-white/5 relative z-10">
+                      <div className="text-[10px] font-mono text-gray-500 bg-white/5 px-2 py-1 rounded border border-white/5">{track.id}</div>
+                      <div className="flex items-center gap-1.5 bg-black/50 px-2 py-1 rounded-full border border-white/5">
+                         <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_5px_#22c55e]"></div>
+                         <span className="text-green-500 text-[9px] font-bold tracking-widest uppercase">Active</span>
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-black text-white mb-3 relative z-10">{item.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed mb-6 relative z-10">{item.desc}</p>
-                    <div className="border-t border-white/10 pt-4 flex items-center justify-between relative z-10">
-                      <span className="text-xs text-gray-500">{item.metricLabel}</span>
-                      <span className="text-sm font-black font-mono" style={{ color: item.color }}>{item.metric}</span>
+
+                    {/* 行业专属金属一体机 (替代原有的雷达光圈，强化硬件物理感) */}
+                    <div className="relative w-full h-32 mb-6 flex flex-col items-center justify-end group-hover:-translate-y-2 transition-transform duration-500">
+
+                      {/* 迷你金属一体机 (CNC 切割质感) */}
+                      <div className="relative w-40 h-[60px] bg-gradient-to-b from-[#f8fafc] via-[#cbd5e1] to-[#64748b] rounded-xl shadow-[0_20px_25px_rgba(0,0,0,0.8),_inset_0_2px_4px_rgba(255,255,255,1)] border border-white/50 flex flex-col justify-end overflow-hidden z-10">
+
+                        {/* 顶部高光与工业散热刻线 */}
+                        <div className="absolute top-0 left-0 w-full h-[60%] bg-gradient-to-b from-white/90 to-transparent pointer-events-none"></div>
+                        <div className="absolute top-1.5 left-1/2 -translate-x-1/2 w-16 h-[3px] bg-slate-400/50 rounded-full shadow-[inset_0_1px_2px_rgba(0,0,0,0.3)]"></div>
+
+                        {/* 前面板主体 (深色接口区) */}
+                        <div className="w-full h-8 bg-gradient-to-b from-[#1e293b] to-[#020617] border-t border-slate-400/80 flex items-center justify-between px-3.5 shadow-[inset_0_3px_6px_rgba(0,0,0,0.9)] z-10 relative">
+
+                           {/* USB 接口组合 */}
+                           <div className="flex gap-2 items-center">
+                             <div className="w-5 h-2.5 bg-black border-t border-slate-600 flex justify-center items-end pb-[1.5px] rounded-[2px] shadow-inner">
+                               <div className={`w-3 h-[2px] ${track.accentBg} opacity-90`}></div>
+                             </div>
+                             <div className="w-5 h-2.5 bg-black border-t border-slate-600 flex justify-center items-end pb-[1.5px] rounded-[2px] shadow-inner">
+                               <div className={`w-3 h-[2px] ${track.accentBg} opacity-90`}></div>
+                             </div>
+                           </div>
+
+                           {/* 电源键与状态指示灯 (随行业主题色发光) */}
+                           <div className="flex items-center gap-2">
+                             <div className={`w-1.5 h-1.5 rounded-full ${track.accentBg} animate-pulse ${track.accentShadow}`}></div>
+                             <div className="w-4 h-4 rounded-full border border-slate-500 bg-gradient-to-b from-slate-600 to-slate-800 shadow-[0_1px_3px_rgba(0,0,0,0.8)] flex items-center justify-center">
+                               <div className="w-2 h-2 rounded-full border-[1px] border-white/60"></div>
+                             </div>
+                           </div>
+                        </div>
+                      </div>
+
+                      {/* 设备底部环境重力阴影 */}
+                      <div className="absolute -bottom-3 w-[85%] h-5 bg-black/80 blur-md rounded-full -z-10"></div>
                     </div>
-                    <div className="mt-3 w-full h-1 bg-white/5 rounded-full overflow-hidden">
-                      <div className="h-full rounded-full shadow-[0_0_8px]" style={{ width: item.barPct, backgroundColor: item.color, boxShadow: `0 0 8px ${item.color}` }}></div>
+
+                    <h3 className="text-2xl font-bold text-white mb-3 relative z-10">{track.title}</h3>
+                    <p className="text-sm text-gray-400 mb-8 flex-1 leading-relaxed relative z-10">{track.desc}</p>
+
+                    {/* 实时监控面板 (增强物理运转感) */}
+                    <div className="w-full bg-black/60 border border-white/5 rounded-xl p-3.5 flex justify-between items-center relative z-10 shadow-inner group-hover:bg-black/80 transition-colors">
+                       <span className="text-xs text-gray-500 font-medium">{track.metric}</span>
+                       <div className="flex items-center gap-2">
+                          {/* 扫描跳动的小波浪形指示 */}
+                          <div className="flex items-end gap-[2px] h-3 opacity-70">
+                            <div className={`w-[2px] h-full ${track.themeColor.split(' ')[0].replace('from-', 'bg-').split('/')[0]} animate-[pulse_1s_infinite]`}></div>
+                            <div className={`w-[2px] h-2/3 ${track.themeColor.split(' ')[0].replace('from-', 'bg-').split('/')[0]} animate-[pulse_1.5s_infinite]`}></div>
+                            <div className={`w-[2px] h-full ${track.themeColor.split(' ')[0].replace('from-', 'bg-').split('/')[0]} animate-[pulse_0.8s_infinite]`}></div>
+                          </div>
+                          <span className={`text-sm font-mono font-bold ${track.textColor}`}>{track.value}</span>
+                       </div>
                     </div>
                   </div>
                 ))}
+              </div>
+              <div className="mt-12 text-center text-sm font-mono text-gray-500">
+                <span className="animate-pulse inline-block mr-2 text-[#00b4ff]">_</span> 更多行业模块持续扩展中...
               </div>
             </div>
           </section>
