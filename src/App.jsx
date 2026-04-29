@@ -690,70 +690,194 @@ export default function App() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {[
-                  {
-                    model: 'YUANJI T',
-                    tag: '量化交易专用终端',
-                    icon: <TrendingUp className="w-7 h-7 text-[#00b4ff]" />,
-                    price: '¥49,999',
-                    features: ['内置多 Agent 协同交易系统', '实时千级并发策略回测引擎', '华尔街级风控合规模型', '数据全本地加密运行'],
-                    btnBg: 'from-[#00b4ff] to-[#0a4b9c]',
-                    btnShadow: 'hover:shadow-[0_0_30px_rgba(0,180,255,0.5)]',
-                    accent: '#00b4ff',
-                    checkColor: 'text-[#00b4ff]',
-                  },
-                  {
-                    model: 'YUANJI M',
-                    tag: '营销增长专用终端',
-                    icon: <Target className="w-7 h-7 text-purple-400" />,
-                    price: '¥39,999',
-                    features: ['全域用户画像智能构建', '自动化投放策略生成引擎', 'A/B 实验与归因分析', 'ROI 实时追踪与优化'],
-                    btnBg: 'from-purple-500 to-[#0a4b9c]',
-                    btnShadow: 'hover:shadow-[0_0_30px_rgba(168,85,247,0.5)]',
-                    accent: '#a855f7',
-                    checkColor: 'text-purple-400',
-                  },
-                  {
-                    model: 'YUANJI H',
-                    tag: '大健康专用终端',
-                    icon: <Dna className="w-7 h-7 text-green-400" />,
-                    price: '¥59,999',
-                    features: ['医学生物知识图谱引擎', '蛋白质结构 AI 预测模型', '临床数据分析与报告生成', 'HIPAA 级数据安全合规'],
-                    btnBg: 'from-green-500 to-[#0a4b9c]',
-                    btnShadow: 'hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]',
-                    accent: '#22c55e',
-                    checkColor: 'text-green-400',
-                  },
-                ].map((model, i) => (
-                  <div key={i} className="relative p-8 bg-gradient-to-b from-[#0a0a0a] to-[#050505] border border-white/10 rounded-3xl hover:border-[#00b4ff]/50 hover:-translate-y-3 transition-all duration-500 group flex flex-col">
-                    <div className="absolute top-0 right-0 w-40 h-40 blur-3xl group-hover:opacity-100 transition-opacity opacity-50" style={{ backgroundColor: `${model.accent}10` }}></div>
-                    <div className="w-14 h-14 mb-6 rounded-xl border flex items-center justify-center" style={{ backgroundColor: `${model.accent}10`, borderColor: `${model.accent}20` }}>
-                      {model.icon}
-                    </div>
-                    <h3 className="text-2xl font-black text-white mb-1">{model.model}</h3>
-                    <p className="text-xs font-mono mb-6" style={{ color: model.accent }}>{model.tag}</p>
-                    <ul className="space-y-3 mb-8 flex-1">
-                      {model.features.map((feat, j) => (
-                        <li key={j} className="flex items-start gap-3 text-sm text-gray-400">
-                          <Check className={`w-4 h-4 mt-0.5 shrink-0 ${model.checkColor}`} />
-                          {feat}
-                        </li>
+                {/* YUANJI T - 宽体横置交易终端 */}
+                <div className="relative p-8 bg-gradient-to-b from-[#0a0a0a] to-[#050505] border border-white/10 rounded-3xl hover:border-[#00b4ff]/50 hover:-translate-y-3 transition-all duration-500 group flex flex-col">
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-[#00b4ff]/10 blur-3xl group-hover:opacity-100 transition-opacity opacity-50"></div>
+
+                  {/* 设备图 */}
+                  <div className="mb-6 flex justify-center">
+                    <svg viewBox="0 0 280 170" className="w-full h-auto max-w-[280px]" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="t-body" x1="140" y1="0" x2="140" y2="170" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#e2e8f0"/><stop offset="0.5" stopColor="#94a3b8"/><stop offset="1" stopColor="#475569"/>
+                        </linearGradient>
+                        <linearGradient id="t-screen" x1="140" y1="50" x2="140" y2="105" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#0f172a"/><stop offset="1" stopColor="#020617"/>
+                        </linearGradient>
+                      </defs>
+                      {/* 底座阴影 */}
+                      <ellipse cx="140" cy="162" rx="120" ry="8" fill="black" opacity="0.4"/>
+                      {/* 机身主体 */}
+                      <rect x="15" y="20" width="250" height="130" rx="16" fill="url(#t-body)" stroke="#cbd5e1" strokeWidth="0.5"/>
+                      {/* 顶部高光 */}
+                      <rect x="15" y="20" width="250" height="40" rx="16" fill="url(#t-body)" opacity="0.6"/>
+                      {/* 前面板深色区域 */}
+                      <rect x="30" y="50" width="220" height="90" rx="10" fill="url(#t-screen)"/>
+                      {/* 屏幕内容 - 交易图表 */}
+                      <rect x="42" y="58" width="100" height="72" rx="4" fill="#020617" stroke="#1e293b" strokeWidth="0.5"/>
+                      <polyline points="48,110 66,95 82,102 98,78 114,88 134,62" fill="none" stroke="#00b4ff" strokeWidth="1.2" opacity="0.9"/>
+                      <line x1="48" y1="118" x2="134" y2="118" stroke="#1e293b" strokeWidth="0.5"/>
+                      <line x1="48" y1="122" x2="100" y2="122" stroke="#1e293b" strokeWidth="0.5"/>
+                      {/* 右侧数据面板 */}
+                      <rect x="152" y="58" width="86" height="30" rx="3" fill="#020617" stroke="#1e293b" strokeWidth="0.5"/>
+                      <text x="195" y="77" textAnchor="middle" fill="#00b4ff" fontSize="8" fontFamily="monospace">1.2M req/s</text>
+                      <rect x="152" y="93" width="86" height="3" rx="1.5" fill="#1e293b"/>
+                      <rect x="152" y="93" width="70" height="3" rx="1.5" fill="#00b4ff" opacity="0.8"/>
+                      <rect x="152" y="100" width="86" height="30" rx="3" fill="#020617" stroke="#1e293b" strokeWidth="0.5"/>
+                      <text x="195" y="119" textAnchor="middle" fill="#64748b" fontSize="8" fontFamily="monospace">P&L +12.4%</text>
+                      {/* 状态灯 */}
+                      <circle cx="41" cy="46" r="2" fill="#22c55e" opacity="0.9"/>
+                      <circle cx="49" cy="46" r="2" fill="#00b4ff" opacity="0.7"/>
+                      {/* 品牌标 */}
+                      <text x="195" y="35" textAnchor="middle" fill="#1e293b" fontSize="9" fontFamily="monospace" fontWeight="bold">YUANJI T</text>
+                      {/* 散热格栅 */}
+                      {[...Array(6)].map((_, i) => (
+                        <line key={i} x1={240 + i*4} y1="60" x2={240 + i*4} y2="130" stroke="#64748b" strokeWidth="1.5" opacity="0.4"/>
                       ))}
-                    </ul>
-                    <div className="border-t border-white/10 pt-6">
-                      <div className="flex items-baseline gap-1 mb-6">
-                        <span className="text-3xl font-black text-white">{model.price}</span>
-                        <span className="text-xs text-gray-500">/ 台</span>
-                      </div>
-                      <button
-                        onClick={() => handleOpenReservation(model.model)}
-                        className={`w-full py-3 bg-gradient-to-r ${model.btnBg} text-white font-bold rounded-xl transition-all duration-300 active:scale-95 ${model.btnShadow}`}
-                      >
-                        立即预定
-                      </button>
-                    </div>
+                    </svg>
                   </div>
-                ))}
+
+                  <h3 className="text-2xl font-black text-white mb-1">YUANJI T</h3>
+                  <p className="text-xs text-[#00b4ff] font-mono mb-6">量化交易专用终端</p>
+                  <ul className="space-y-3 mb-8 flex-1">
+                    {['内置多 Agent 协同交易系统', '实时千级并发策略回测引擎', '华尔街级风控合规模型', '数据全本地加密运行'].map((feat, j) => (
+                      <li key={j} className="flex items-start gap-3 text-sm text-gray-400">
+                        <Check className="w-4 h-4 mt-0.5 shrink-0 text-[#00b4ff]" />{feat}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="border-t border-white/10 pt-6">
+                    <div className="flex items-baseline gap-1 mb-6">
+                      <span className="text-3xl font-black text-white">¥49,999</span>
+                      <span className="text-xs text-gray-500">/ 台</span>
+                    </div>
+                    <button onClick={() => handleOpenReservation('YUANJI T')} className="w-full py-3 bg-gradient-to-r from-[#00b4ff] to-[#0a4b9c] text-white font-bold rounded-xl hover:shadow-[0_0_30px_rgba(0,180,255,0.5)] transition-all duration-300 active:scale-95">立即预定</button>
+                  </div>
+                </div>
+
+                {/* YUANJI M - 立式塔式终端 */}
+                <div className="relative p-8 bg-gradient-to-b from-[#0a0a0a] to-[#050505] border border-white/10 rounded-3xl hover:border-purple-500/50 hover:-translate-y-3 transition-all duration-500 group flex flex-col">
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/10 blur-3xl group-hover:opacity-100 transition-opacity opacity-50"></div>
+
+                  <div className="mb-6 flex justify-center">
+                    <svg viewBox="0 0 280 170" className="w-full h-auto max-w-[280px]" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="m-body" x1="140" y1="0" x2="140" y2="170" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#e2e8f0"/><stop offset="0.3" stopColor="#cbd5e1"/><stop offset="0.7" stopColor="#64748b"/><stop offset="1" stopColor="#334155"/>
+                        </linearGradient>
+                      </defs>
+                      <ellipse cx="140" cy="162" rx="90" ry="8" fill="black" opacity="0.4"/>
+                      {/* 底座 */}
+                      <rect x="75" y="145" width="130" height="15" rx="4" fill="#334155" stroke="#475569" strokeWidth="0.5"/>
+                      {/* 塔身 */}
+                      <rect x="90" y="25" width="100" height="122" rx="12" fill="url(#m-body)" stroke="#94a3b8" strokeWidth="0.5"/>
+                      {/* 顶部面板 */}
+                      <rect x="90" y="25" width="100" height="25" rx="12" fill="#475569" opacity="0.3"/>
+                      {/* 前面板 */}
+                      <rect x="98" y="55" width="84" height="80" rx="6" fill="#0f172a" stroke="#1e293b" strokeWidth="0.5"/>
+                      {/* 显示屏 */}
+                      <rect x="104" y="60" width="72" height="40" rx="3" fill="#020617" stroke="#1e293b" strokeWidth="0.5"/>
+                      {/* 屏幕内容-数据可视化 */}
+                      <rect x="110" y="66" width="8" height="28" rx="1" fill="#a855f7" opacity="0.7"/>
+                      <rect x="122" y="70" width="8" height="24" rx="1" fill="#a855f7" opacity="0.5"/>
+                      <rect x="134" y="64" width="8" height="30" rx="1" fill="#a855f7" opacity="0.8"/>
+                      <rect x="146" y="72" width="8" height="22" rx="1" fill="#a855f7" opacity="0.4"/>
+                      <rect x="158" y="68" width="8" height="26" rx="1" fill="#a855f7" opacity="0.6"/>
+                      {/* 状态条 */}
+                      <rect x="104" y="105" width="72" height="3" rx="1.5" fill="#1e293b"/>
+                      <rect x="104" y="105" width="42" height="3" rx="1.5" fill="#a855f7" opacity="0.8"/>
+                      <rect x="104" y="112" width="72" height="3" rx="1.5" fill="#1e293b"/>
+                      <rect x="104" y="112" width="56" height="3" rx="1.5" fill="#a855f7" opacity="0.6"/>
+                      <rect x="104" y="119" width="72" height="16" rx="2" fill="#020617" stroke="#1e293b" strokeWidth="0.5"/>
+                      <text x="140" y="131" textAnchor="middle" fill="#a855f7" fontSize="7" fontFamily="monospace">50k+ profiles/h</text>
+                      {/* 通风孔 */}
+                      {[...Array(5)].map((_, i) => (
+                        <line key={i} x1={100} y1={88 + i*6} x2={103} y2={88 + i*6} stroke="#64748b" strokeWidth="1" opacity="0.4"/>
+                      ))}
+                      {/* 指示灯 */}
+                      <circle cx="100" cy="50" r="2" fill="#a855f7" opacity="0.9"/>
+                      {/* 品牌 */}
+                      <text x="140" y="42" textAnchor="middle" fill="#1e293b" fontSize="8" fontFamily="monospace" fontWeight="bold">YUANJI M</text>
+                    </svg>
+                  </div>
+
+                  <h3 className="text-2xl font-black text-white mb-1">YUANJI M</h3>
+                  <p className="text-xs text-purple-400 font-mono mb-6">营销增长专用终端</p>
+                  <ul className="space-y-3 mb-8 flex-1">
+                    {['全域用户画像智能构建', '自动化投放策略生成引擎', 'A/B 实验与归因分析', 'ROI 实时追踪与优化'].map((feat, j) => (
+                      <li key={j} className="flex items-start gap-3 text-sm text-gray-400">
+                        <Check className="w-4 h-4 mt-0.5 shrink-0 text-purple-400" />{feat}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="border-t border-white/10 pt-6">
+                    <div className="flex items-baseline gap-1 mb-6">
+                      <span className="text-3xl font-black text-white">¥39,999</span>
+                      <span className="text-xs text-gray-500">/ 台</span>
+                    </div>
+                    <button onClick={() => handleOpenReservation('YUANJI M')} className="w-full py-3 bg-gradient-to-r from-purple-500 to-[#0a4b9c] text-white font-bold rounded-xl hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] transition-all duration-300 active:scale-95">立即预定</button>
+                  </div>
+                </div>
+
+                {/* YUANJI H - 圆形医疗级终端 */}
+                <div className="relative p-8 bg-gradient-to-b from-[#0a0a0a] to-[#050505] border border-white/10 rounded-3xl hover:border-green-500/50 hover:-translate-y-3 transition-all duration-500 group flex flex-col">
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-green-500/10 blur-3xl group-hover:opacity-100 transition-opacity opacity-50"></div>
+
+                  <div className="mb-6 flex justify-center">
+                    <svg viewBox="0 0 280 170" className="w-full h-auto max-w-[280px]" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <defs>
+                        <linearGradient id="h-body" x1="140" y1="0" x2="140" y2="170" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#f1f5f9"/><stop offset="0.4" stopColor="#cbd5e1"/><stop offset="1" stopColor="#64748b"/>
+                        </linearGradient>
+                      </defs>
+                      <ellipse cx="140" cy="162" rx="85" ry="8" fill="black" opacity="0.35"/>
+                      {/* 圆形底座 */}
+                      <rect x="100" y="140" width="80" height="16" rx="8" fill="#334155" stroke="#475569" strokeWidth="0.5"/>
+                      {/* 主体圆形机身 */}
+                      <rect x="70" y="18" width="140" height="125" rx="70" fill="url(#h-body)" stroke="#94a3b8" strokeWidth="0.5"/>
+                      {/* 内部圆环装饰 */}
+                      <circle cx="140" cy="80" r="52" fill="none" stroke="#cbd5e1" strokeWidth="0.5" opacity="0.5"/>
+                      <circle cx="140" cy="80" r="46" fill="#0f172a" stroke="#1e293b" strokeWidth="1"/>
+                      {/* 中心显示屏 */}
+                      <circle cx="140" cy="80" r="36" fill="#020617" stroke="#1e293b" strokeWidth="0.5"/>
+                      {/* DNA螺旋图案 */}
+                      <path d="M122,58 Q155,78 122,98" fill="none" stroke="#22c55e" strokeWidth="0.8" opacity="0.6"/>
+                      <path d="M158,58 Q125,78 158,98" fill="none" stroke="#22c55e" strokeWidth="0.8" opacity="0.6"/>
+                      <path d="M122,65 Q152,80 122,95" fill="none" stroke="#22c55e" strokeWidth="0.5" opacity="0.3"/>
+                      <path d="M158,65 Q128,80 158,95" fill="none" stroke="#22c55e" strokeWidth="0.5" opacity="0.3"/>
+                      {/* 数据环 */}
+                      <circle cx="140" cy="80" r="40" fill="none" stroke="#22c55e" strokeWidth="1.5" strokeDasharray="16,8" opacity="0.5"/>
+                      <circle cx="140" cy="80" r="28" fill="none" stroke="#22c55e" strokeWidth="0.8" strokeDasharray="8,12" opacity="0.35"/>
+                      {/* 中心读数 */}
+                      <text x="140" y="78" textAnchor="middle" fill="#22c55e" fontSize="9" fontFamily="monospace" fontWeight="bold">实时推理</text>
+                      <text x="140" y="90" textAnchor="middle" fill="#22c55e" fontSize="7" fontFamily="monospace" opacity="0.6">STATUS: OK</text>
+                      {/* 顶部状态灯 */}
+                      <circle cx="140" cy="32" r="3" fill="#22c55e" opacity="0.8"/>
+                      {/* 品牌 */}
+                      <text x="140" y="30" textAnchor="middle" fill="#1e293b" fontSize="8" fontFamily="monospace" fontWeight="bold">YUANJI H</text>
+                      {/* 侧面接口 */}
+                      <rect x="62" y="70" width="8" height="4" rx="1" fill="#475569"/>
+                      <rect x="62" y="78" width="8" height="4" rx="1" fill="#475569"/>
+                    </svg>
+                  </div>
+
+                  <h3 className="text-2xl font-black text-white mb-1">YUANJI H</h3>
+                  <p className="text-xs text-green-400 font-mono mb-6">大健康专用终端</p>
+                  <ul className="space-y-3 mb-8 flex-1">
+                    {['医学生物知识图谱引擎', '蛋白质结构 AI 预测模型', '临床数据分析与报告生成', 'HIPAA 级数据安全合规'].map((feat, j) => (
+                      <li key={j} className="flex items-start gap-3 text-sm text-gray-400">
+                        <Check className="w-4 h-4 mt-0.5 shrink-0 text-green-400" />{feat}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="border-t border-white/10 pt-6">
+                    <div className="flex items-baseline gap-1 mb-6">
+                      <span className="text-3xl font-black text-white">¥59,999</span>
+                      <span className="text-xs text-gray-500">/ 台</span>
+                    </div>
+                    <button onClick={() => handleOpenReservation('YUANJI H')} className="w-full py-3 bg-gradient-to-r from-green-500 to-[#0a4b9c] text-white font-bold rounded-xl hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-all duration-300 active:scale-95">立即预定</button>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
