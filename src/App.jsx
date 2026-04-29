@@ -675,207 +675,233 @@ export default function App() {
             </div>
           </section>
 
-          {/* 节点型号 */}
-          <section id="models" className="py-24 relative border-t border-white/5">
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#0a4b9c]/10 blur-[120px] pointer-events-none"></div>
+          {/* 终端型号 (Hardware Models) */}
+          <section id="models" className="py-24 relative bg-[url('https://www.transparenttextures.com/patterns/stardust.png')]">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-[#00b4ff]/50 to-transparent"></div>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
-                <div className="inline-block px-3 py-1 bg-[#00b4ff]/10 border border-[#00b4ff]/20 text-[#00b4ff] text-xs font-bold uppercase tracking-widest rounded mb-6">
-                  节点型号
+                <div className="inline-block px-3 py-1 bg-[#00b4ff]/10 border border-[#00b4ff]/20 text-[#00b4ff] text-xs font-bold uppercase tracking-widest rounded mb-4">
+                  量化交易系列
                 </div>
-                <h2 className="text-3xl md:text-5xl font-black text-white mb-4">选择你的 AI 终端</h2>
-                <p className="text-gray-400 max-w-xl mx-auto">
-                  从轻量级到企业级，每一种型号都代表一个行业完整的 AI 智囊团。
-                </p>
+                <h2 className="text-3xl md:text-5xl font-black text-white mb-4">量化交易专属系列</h2>
+                <p className="text-gray-400">选择适合您的算力节点，立刻开启您的 AI 财富引擎。</p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {/* YUANJI T - 宽体横置交易终端 */}
-                <div className="relative p-8 bg-gradient-to-b from-[#0a0a0a] to-[#050505] border border-white/10 rounded-3xl hover:border-[#00b4ff]/50 hover:-translate-y-3 transition-all duration-500 group flex flex-col">
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-[#00b4ff]/10 blur-3xl group-hover:opacity-100 transition-opacity opacity-50"></div>
-
-                  {/* 设备图 */}
-                  <div className="mb-6 flex justify-center">
-                    <svg viewBox="0 0 280 170" className="w-full h-auto max-w-[280px]" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <defs>
-                        <linearGradient id="t-body" x1="140" y1="0" x2="140" y2="170" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#e2e8f0"/><stop offset="0.5" stopColor="#94a3b8"/><stop offset="1" stopColor="#475569"/>
-                        </linearGradient>
-                        <linearGradient id="t-screen" x1="140" y1="50" x2="140" y2="105" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#0f172a"/><stop offset="1" stopColor="#020617"/>
-                        </linearGradient>
-                      </defs>
-                      {/* 底座阴影 */}
-                      <ellipse cx="140" cy="162" rx="120" ry="8" fill="black" opacity="0.4"/>
-                      {/* 机身主体 */}
-                      <rect x="15" y="20" width="250" height="130" rx="16" fill="url(#t-body)" stroke="#cbd5e1" strokeWidth="0.5"/>
-                      {/* 顶部高光 */}
-                      <rect x="15" y="20" width="250" height="40" rx="16" fill="url(#t-body)" opacity="0.6"/>
-                      {/* 前面板深色区域 */}
-                      <rect x="30" y="50" width="220" height="90" rx="10" fill="url(#t-screen)"/>
-                      {/* 屏幕内容 - 交易图表 */}
-                      <rect x="42" y="58" width="100" height="72" rx="4" fill="#020617" stroke="#1e293b" strokeWidth="0.5"/>
-                      <polyline points="48,110 66,95 82,102 98,78 114,88 134,62" fill="none" stroke="#00b4ff" strokeWidth="1.2" opacity="0.9"/>
-                      <line x1="48" y1="118" x2="134" y2="118" stroke="#1e293b" strokeWidth="0.5"/>
-                      <line x1="48" y1="122" x2="100" y2="122" stroke="#1e293b" strokeWidth="0.5"/>
-                      {/* 右侧数据面板 */}
-                      <rect x="152" y="58" width="86" height="30" rx="3" fill="#020617" stroke="#1e293b" strokeWidth="0.5"/>
-                      <text x="195" y="77" textAnchor="middle" fill="#00b4ff" fontSize="8" fontFamily="monospace">1.2M req/s</text>
-                      <rect x="152" y="93" width="86" height="3" rx="1.5" fill="#1e293b"/>
-                      <rect x="152" y="93" width="70" height="3" rx="1.5" fill="#00b4ff" opacity="0.8"/>
-                      <rect x="152" y="100" width="86" height="30" rx="3" fill="#020617" stroke="#1e293b" strokeWidth="0.5"/>
-                      <text x="195" y="119" textAnchor="middle" fill="#64748b" fontSize="8" fontFamily="monospace">P&L +12.4%</text>
-                      {/* 状态灯 */}
-                      <circle cx="41" cy="46" r="2" fill="#22c55e" opacity="0.9"/>
-                      <circle cx="49" cy="46" r="2" fill="#00b4ff" opacity="0.7"/>
-                      {/* 品牌标 */}
-                      <text x="195" y="35" textAnchor="middle" fill="#1e293b" fontSize="9" fontFamily="monospace" fontWeight="bold">YUANJI T</text>
-                      {/* 散热格栅 */}
-                      {[...Array(6)].map((_, i) => (
-                        <line key={i} x1={240 + i*4} y1="60" x2={240 + i*4} y2="130" stroke="#64748b" strokeWidth="1.5" opacity="0.4"/>
-                      ))}
-                    </svg>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                {/* YUANJI T Card */}
+                <div className="relative group rounded-3xl bg-[#0a0a0a] border border-white/10 hover:border-[#00b4ff]/50 transition-all duration-500 overflow-hidden flex flex-col">
+                  <div className="p-8 pb-0">
+                    <h3 className="text-3xl font-black text-white mb-2">YUANJI <span className="text-[#00b4ff]">T</span></h3>
+                    <p className="text-sm text-gray-400 mb-6 font-medium">标准量化交易节点 / 个人宽客优选</p>
+                    <div className="flex items-end gap-2 mb-8">
+                      <span className="text-4xl font-bold text-white">STANDARD</span>
+                      <span className="text-gray-500 text-sm mb-1 uppercase tracking-widest">NODE</span>
+                    </div>
                   </div>
 
-                  <h3 className="text-2xl font-black text-white mb-1">YUANJI T</h3>
-                  <p className="text-xs text-[#00b4ff] font-mono mb-6">量化交易专用终端</p>
-                  <ul className="space-y-3 mb-8 flex-1">
-                    {['内置多 Agent 协同交易系统', '实时千级并发策略回测引擎', '华尔街级风控合规模型', '数据全本地加密运行'].map((feat, j) => (
-                      <li key={j} className="flex items-start gap-3 text-sm text-gray-400">
-                        <Check className="w-4 h-4 mt-0.5 shrink-0 text-[#00b4ff]" />{feat}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="border-t border-white/10 pt-6">
-                    <div className="flex items-baseline gap-1 mb-6">
-                      <span className="text-3xl font-black text-white">¥49,999</span>
-                      <span className="text-xs text-gray-500">/ 台</span>
+                  {/* 替换为：实体硬件微缩渲染图 (YUANJI T) */}
+                  <div className="relative h-56 w-full bg-gradient-to-b from-transparent to-[#00b4ff]/5 border-y border-white/5 flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+
+                    {/* 硬件小主机 */}
+                    <div className="w-36 h-40 flex flex-col justify-end relative z-10 group-hover:-translate-y-2 transition-transform duration-500">
+                      {/* 顶部金属散热格栅 */}
+                      <div className="w-full h-8 bg-gradient-to-b from-[#475569] to-[#334155] rounded-t-lg border-t border-x border-white/20 flex flex-col justify-center px-4 py-1 gap-1 shadow-[0_-5px_15px_rgba(0,0,0,0.5)_inset]">
+                         <div className="w-full h-[1.5px] bg-[#0f172a] opacity-60 shadow-inner"></div>
+                         <div className="w-full h-[1.5px] bg-[#0f172a] opacity-60 shadow-inner"></div>
+                         <div className="w-full h-[1.5px] bg-[#0f172a] opacity-60 shadow-inner"></div>
+                      </div>
+
+                      {/* 前面板主体 (深色拉丝) */}
+                      <div className="w-full h-24 bg-gradient-to-b from-[#1e293b] to-[#050505] rounded-b-lg border-x border-b border-white/10 p-3 flex flex-col justify-between shadow-[0_20px_30px_rgba(0,0,0,0.8)] relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none"></div>
+
+                        <div className="flex justify-between items-start z-10">
+                           <span className="text-[10px] font-black italic text-white/80 tracking-widest drop-shadow">YUANJI</span>
+                           <div className="w-1.5 h-1.5 rounded-full bg-[#00b4ff] animate-pulse shadow-[0_0_8px_#00b4ff]"></div>
+                        </div>
+
+                        {/* 中央底纹 */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-20">
+                           <Cpu className="w-10 h-10 text-[#00b4ff]" />
+                        </div>
+
+                        {/* 底部硬件接口区 */}
+                        <div className="w-full h-7 bg-black/80 rounded border border-white/5 flex items-center justify-between px-2.5 z-10 shadow-inner">
+                           {/* USB x1 */}
+                           <div className="w-4 h-2 bg-black border border-slate-700 flex justify-center items-end pb-[1px] rounded-sm">
+                             <div className="w-2.5 h-[1.5px] bg-blue-600"></div>
+                           </div>
+
+                           {/* Type-C */}
+                           <div className="w-2 h-1 bg-slate-800 rounded-full border border-slate-600"></div>
+
+                           {/* 电源键 */}
+                           <div className="w-3.5 h-3.5 rounded-full border border-slate-500 bg-slate-700 flex items-center justify-center shadow-[0_1px_3px_rgba(0,0,0,0.5)]">
+                             <div className="w-1.5 h-1.5 rounded-full border border-white/40 border-t-transparent"></div>
+                           </div>
+                        </div>
+                      </div>
+
+                      {/* 悬浮光晕 */}
+                      <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-3 bg-[#00b4ff]/30 blur-lg rounded-full z-0"></div>
                     </div>
-                    <button onClick={() => handleOpenReservation('YUANJI T')} className="w-full py-3 bg-gradient-to-r from-[#00b4ff] to-[#0a4b9c] text-white font-bold rounded-xl hover:shadow-[0_0_30px_rgba(0,180,255,0.5)] transition-all duration-300 active:scale-95">立即预定</button>
+                  </div>
+
+                  <div className="p-8 flex-1 flex flex-col">
+                    {/* 硬件配置网格 */}
+                    <div className="mb-6 grid grid-cols-2 gap-3">
+                      <div className="bg-white/[0.02] border border-white/5 rounded-lg p-3">
+                        <div className="text-gray-500 text-[10px] mb-1 font-mono">CPU / 算力芯片</div>
+                        <div className="text-white text-sm font-bold">NPU-1 8核引擎</div>
+                      </div>
+                      <div className="bg-white/[0.02] border border-white/5 rounded-lg p-3">
+                        <div className="text-gray-500 text-[10px] mb-1 font-mono">RAM / 运行内存</div>
+                        <div className="text-white text-sm font-bold">32GB LPDDR5</div>
+                      </div>
+                      <div className="bg-white/[0.02] border border-white/5 rounded-lg p-3">
+                        <div className="text-gray-500 text-[10px] mb-1 font-mono">ROM / 存储空间</div>
+                        <div className="text-white text-sm font-bold">1TB NVMe</div>
+                      </div>
+                      <div className="bg-white/[0.02] border border-white/5 rounded-lg p-3">
+                        <div className="text-gray-500 text-[10px] mb-1 font-mono">AI / 本地模型</div>
+                        <div className="text-[#00b4ff] text-sm font-bold">已内置 (7B模型)</div>
+                      </div>
+                    </div>
+
+                    <ul className="space-y-4 flex-1 pt-4 border-t border-white/5">
+                      {[
+                        "基础本地算力引擎",
+                        "内置核心量化策略 Agent",
+                        "标准 HTK 算力收益产出",
+                        "7×24H 自动化交易执行",
+                        "本地数据隔离与隐私保护"
+                      ].map((feature, i) => (
+                        <li key={i} className="flex items-center gap-3 text-sm text-gray-300">
+                          <div className="w-5 h-5 rounded-full bg-[#00b4ff]/10 flex items-center justify-center flex-shrink-0">
+                            <Check className="w-3 h-3 text-[#00b4ff]" />
+                          </div>
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
 
-                {/* YUANJI M - 立式塔式终端 */}
-                <div className="relative p-8 bg-gradient-to-b from-[#0a0a0a] to-[#050505] border border-white/10 rounded-3xl hover:border-purple-500/50 hover:-translate-y-3 transition-all duration-500 group flex flex-col">
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-purple-500/10 blur-3xl group-hover:opacity-100 transition-opacity opacity-50"></div>
+                {/* YUANJI T Pro Card */}
+                <div className="relative group rounded-3xl bg-gradient-to-b from-[#0a0a0a] to-[#050505] border border-[#00b4ff]/30 hover:border-[#00b4ff] hover:shadow-[0_0_50px_rgba(0,180,255,0.15)] transition-all duration-500 overflow-hidden flex flex-col scale-100 md:scale-105 z-10">
+                  <div className="absolute top-0 right-0 px-4 py-1.5 bg-gradient-to-r from-[#00b4ff] to-[#0a4b9c] text-white text-xs font-bold uppercase tracking-wider rounded-bl-xl">
+                    旗舰算力款
+                  </div>
 
-                  <div className="mb-6 flex justify-center">
-                    <svg viewBox="0 0 280 170" className="w-full h-auto max-w-[280px]" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <defs>
-                        <linearGradient id="m-body" x1="140" y1="0" x2="140" y2="170" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#e2e8f0"/><stop offset="0.3" stopColor="#cbd5e1"/><stop offset="0.7" stopColor="#64748b"/><stop offset="1" stopColor="#334155"/>
-                        </linearGradient>
-                      </defs>
-                      <ellipse cx="140" cy="162" rx="90" ry="8" fill="black" opacity="0.4"/>
-                      {/* 底座 */}
-                      <rect x="75" y="145" width="130" height="15" rx="4" fill="#334155" stroke="#475569" strokeWidth="0.5"/>
-                      {/* 塔身 */}
-                      <rect x="90" y="25" width="100" height="122" rx="12" fill="url(#m-body)" stroke="#94a3b8" strokeWidth="0.5"/>
-                      {/* 顶部面板 */}
-                      <rect x="90" y="25" width="100" height="25" rx="12" fill="#475569" opacity="0.3"/>
-                      {/* 前面板 */}
-                      <rect x="98" y="55" width="84" height="80" rx="6" fill="#0f172a" stroke="#1e293b" strokeWidth="0.5"/>
-                      {/* 显示屏 */}
-                      <rect x="104" y="60" width="72" height="40" rx="3" fill="#020617" stroke="#1e293b" strokeWidth="0.5"/>
-                      {/* 屏幕内容-数据可视化 */}
-                      <rect x="110" y="66" width="8" height="28" rx="1" fill="#a855f7" opacity="0.7"/>
-                      <rect x="122" y="70" width="8" height="24" rx="1" fill="#a855f7" opacity="0.5"/>
-                      <rect x="134" y="64" width="8" height="30" rx="1" fill="#a855f7" opacity="0.8"/>
-                      <rect x="146" y="72" width="8" height="22" rx="1" fill="#a855f7" opacity="0.4"/>
-                      <rect x="158" y="68" width="8" height="26" rx="1" fill="#a855f7" opacity="0.6"/>
-                      {/* 状态条 */}
-                      <rect x="104" y="105" width="72" height="3" rx="1.5" fill="#1e293b"/>
-                      <rect x="104" y="105" width="42" height="3" rx="1.5" fill="#a855f7" opacity="0.8"/>
-                      <rect x="104" y="112" width="72" height="3" rx="1.5" fill="#1e293b"/>
-                      <rect x="104" y="112" width="56" height="3" rx="1.5" fill="#a855f7" opacity="0.6"/>
-                      <rect x="104" y="119" width="72" height="16" rx="2" fill="#020617" stroke="#1e293b" strokeWidth="0.5"/>
-                      <text x="140" y="131" textAnchor="middle" fill="#a855f7" fontSize="7" fontFamily="monospace">50k+ profiles/h</text>
-                      {/* 通风孔 */}
-                      {[...Array(5)].map((_, i) => (
-                        <line key={i} x1={100} y1={88 + i*6} x2={103} y2={88 + i*6} stroke="#64748b" strokeWidth="1" opacity="0.4"/>
+                  <div className="p-8 pb-0">
+                    <h3 className="text-3xl font-black text-white mb-2">YUANJI <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00b4ff] to-cyan-300">T Pro</span></h3>
+                    <p className="text-sm text-[#00b4ff] mb-6 font-medium">高性能专业量化节点 / 机构与高净值优选</p>
+                    <div className="flex items-end gap-2 mb-8">
+                      <span className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">PRO</span>
+                      <span className="text-gray-500 text-sm mb-1 uppercase tracking-widest">NODE</span>
+                    </div>
+                  </div>
+
+                  {/* 替换为：旗舰硬件微缩渲染图 (YUANJI T Pro) */}
+                  <div className="relative h-56 w-full bg-gradient-to-b from-transparent to-[#00b4ff]/10 border-y border-[#00b4ff]/20 flex items-center justify-center overflow-hidden">
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"></div>
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#00b4ff] rounded-full blur-[80px] opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+
+                    {/* 旗舰款硬件小主机 */}
+                    <div className="w-44 h-44 flex flex-col justify-end relative z-10 group-hover:-translate-y-2 transition-transform duration-500">
+                      {/* 顶部金属散热格栅 (带发光灯槽) */}
+                      <div className="w-full h-10 bg-gradient-to-b from-[#334155] to-[#1e293b] rounded-t-xl border-t border-x border-[#00b4ff]/40 flex flex-col justify-center px-5 py-1.5 gap-1.5 shadow-[0_-5px_15px_rgba(0,180,255,0.15)_inset] relative overflow-hidden">
+                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-[2px] bg-[#00b4ff] shadow-[0_0_10px_#00b4ff]"></div>
+                         <div className="w-full h-[2px] bg-[#0f172a] opacity-80 shadow-inner"></div>
+                         <div className="w-full h-[2px] bg-[#0f172a] opacity-80 shadow-inner"></div>
+                         <div className="w-full h-[2px] bg-[#0f172a] opacity-80 shadow-inner"></div>
+                      </div>
+
+                      {/* 前面板主体 (更深邃的质感与高光) */}
+                      <div className="w-full h-[110px] bg-gradient-to-b from-[#0f172a] to-[#020617] rounded-b-xl border-x border-b border-[#00b4ff]/20 p-3.5 flex flex-col justify-between shadow-[0_25px_40px_rgba(0,0,0,0.9)] relative overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-b from-[#00b4ff]/10 to-transparent pointer-events-none"></div>
+
+                        <div className="flex justify-between items-start z-10">
+                           <span className="text-xs font-black italic text-white drop-shadow-[0_0_5px_rgba(0,180,255,0.5)] tracking-widest">YUANJI<span className="text-[#00b4ff]">.PRO</span></span>
+                           <div className="flex gap-1.5 bg-black/60 p-1 rounded border border-white/10">
+                             <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_6px_#22c55e]"></div>
+                             <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse shadow-[0_0_8px_#22d3ee]"></div>
+                           </div>
+                        </div>
+
+                        {/* 中央双路 CPU 底纹 */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-1 opacity-30">
+                           <Cpu className="w-9 h-9 text-[#00b4ff]" />
+                           <Cpu className="w-9 h-9 text-cyan-400" />
+                        </div>
+
+                        {/* 底部硬件接口区 (更丰富的旗舰接口) */}
+                        <div className="w-full h-8 bg-black/90 rounded border border-[#00b4ff]/20 flex items-center justify-between px-3 z-10 shadow-[0_0_10px_rgba(0,0,0,0.8)_inset]">
+                           <div className="flex gap-2 items-center">
+                               {/* USB x2 */}
+                               <div className="w-4.5 h-2.5 bg-[#111] border border-slate-700 flex justify-center items-end pb-[1.5px] rounded-[2px]">
+                                 <div className="w-3 h-[1.5px] bg-blue-500"></div>
+                               </div>
+                               <div className="w-4.5 h-2.5 bg-[#111] border border-slate-700 flex justify-center items-end pb-[1.5px] rounded-[2px]">
+                                 <div className="w-3 h-[1.5px] bg-blue-500"></div>
+                               </div>
+                               {/* Type-C */}
+                               <div className="w-2.5 h-1 bg-slate-800 rounded-full border border-slate-600 mt-[2px]"></div>
+                           </div>
+
+                           {/* Pro 专属发光电源键 */}
+                           <div className="w-4 h-4 rounded-full border border-cyan-500/50 bg-gradient-to-b from-slate-600 to-slate-800 flex items-center justify-center shadow-[0_0_5px_rgba(34,211,238,0.3)] cursor-pointer">
+                             <div className="w-2 h-2 rounded-full border-[1.5px] border-cyan-400 border-t-transparent relative">
+                                <div className="absolute -top-0.5 left-1/2 -translate-x-1/2 w-0.5 h-1 bg-cyan-400"></div>
+                             </div>
+                           </div>
+                        </div>
+                      </div>
+
+                      {/* 旗舰款专属宽大底座悬浮光 */}
+                      <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[95%] h-5 bg-[#00b4ff]/40 blur-xl rounded-full z-0"></div>
+                    </div>
+                  </div>
+
+                  <div className="p-8 flex-1 flex flex-col">
+                    {/* 硬件配置网格 (Pro 版专属样式) */}
+                    <div className="mb-6 grid grid-cols-2 gap-3">
+                      <div className="bg-[#00b4ff]/5 border border-[#00b4ff]/20 rounded-lg p-3">
+                        <div className="text-[#00b4ff] text-[10px] mb-1 font-mono">CPU / 算力芯片</div>
+                        <div className="text-white text-sm font-bold">NPU-2 Max 16核双路</div>
+                      </div>
+                      <div className="bg-[#00b4ff]/5 border border-[#00b4ff]/20 rounded-lg p-3">
+                        <div className="text-[#00b4ff] text-[10px] mb-1 font-mono">RAM / 运行内存</div>
+                        <div className="text-white text-sm font-bold">128GB LPDDR5X</div>
+                      </div>
+                      <div className="bg-[#00b4ff]/5 border border-[#00b4ff]/20 rounded-lg p-3">
+                        <div className="text-[#00b4ff] text-[10px] mb-1 font-mono">ROM / 存储空间</div>
+                        <div className="text-white text-sm font-bold">4TB PCIe 4.0</div>
+                      </div>
+                      <div className="bg-[#00b4ff]/5 border border-[#00b4ff]/20 rounded-lg p-3 relative overflow-hidden">
+                        <div className="absolute top-0 right-0 px-2 py-0.5 bg-gradient-to-r from-[#00b4ff] to-[#0a4b9c] text-white text-[8px] font-bold rounded-bl-lg">旗舰版</div>
+                        <div className="text-[#00b4ff] text-[10px] mb-1 font-mono">AI / 本地模型</div>
+                        <div className="text-cyan-300 text-sm font-bold drop-shadow-[0_0_5px_rgba(0,180,255,0.5)]">已内置 (72B模型)</div>
+                      </div>
+                    </div>
+
+                    <ul className="space-y-4 flex-1 pt-4 border-t border-[#00b4ff]/20">
+                      {[
+                        "双核增强型本地算力基座",
+                        "进阶高频交易与深度风控 Agent",
+                        "300% 算力收益产出加成",
+                        "多策略矩阵并发执行",
+                        "专属数据通道与极速响应"
+                      ].map((feature, i) => (
+                        <li key={i} className="flex items-center gap-3 text-sm text-white font-medium">
+                          <div className="w-5 h-5 rounded-full bg-gradient-to-r from-[#00b4ff] to-[#0a4b9c] flex items-center justify-center flex-shrink-0">
+                            <Check className="w-3 h-3 text-white" />
+                          </div>
+                          {feature}
+                        </li>
                       ))}
-                      {/* 指示灯 */}
-                      <circle cx="100" cy="50" r="2" fill="#a855f7" opacity="0.9"/>
-                      {/* 品牌 */}
-                      <text x="140" y="42" textAnchor="middle" fill="#1e293b" fontSize="8" fontFamily="monospace" fontWeight="bold">YUANJI M</text>
-                    </svg>
-                  </div>
-
-                  <h3 className="text-2xl font-black text-white mb-1">YUANJI M</h3>
-                  <p className="text-xs text-purple-400 font-mono mb-6">营销增长专用终端</p>
-                  <ul className="space-y-3 mb-8 flex-1">
-                    {['全域用户画像智能构建', '自动化投放策略生成引擎', 'A/B 实验与归因分析', 'ROI 实时追踪与优化'].map((feat, j) => (
-                      <li key={j} className="flex items-start gap-3 text-sm text-gray-400">
-                        <Check className="w-4 h-4 mt-0.5 shrink-0 text-purple-400" />{feat}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="border-t border-white/10 pt-6">
-                    <div className="flex items-baseline gap-1 mb-6">
-                      <span className="text-3xl font-black text-white">¥39,999</span>
-                      <span className="text-xs text-gray-500">/ 台</span>
-                    </div>
-                    <button onClick={() => handleOpenReservation('YUANJI M')} className="w-full py-3 bg-gradient-to-r from-purple-500 to-[#0a4b9c] text-white font-bold rounded-xl hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] transition-all duration-300 active:scale-95">立即预定</button>
-                  </div>
-                </div>
-
-                {/* YUANJI H - 圆形医疗级终端 */}
-                <div className="relative p-8 bg-gradient-to-b from-[#0a0a0a] to-[#050505] border border-white/10 rounded-3xl hover:border-green-500/50 hover:-translate-y-3 transition-all duration-500 group flex flex-col">
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-green-500/10 blur-3xl group-hover:opacity-100 transition-opacity opacity-50"></div>
-
-                  <div className="mb-6 flex justify-center">
-                    <svg viewBox="0 0 280 170" className="w-full h-auto max-w-[280px]" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <defs>
-                        <linearGradient id="h-body" x1="140" y1="0" x2="140" y2="170" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#f1f5f9"/><stop offset="0.4" stopColor="#cbd5e1"/><stop offset="1" stopColor="#64748b"/>
-                        </linearGradient>
-                      </defs>
-                      <ellipse cx="140" cy="162" rx="85" ry="8" fill="black" opacity="0.35"/>
-                      {/* 圆形底座 */}
-                      <rect x="100" y="140" width="80" height="16" rx="8" fill="#334155" stroke="#475569" strokeWidth="0.5"/>
-                      {/* 主体圆形机身 */}
-                      <rect x="70" y="18" width="140" height="125" rx="70" fill="url(#h-body)" stroke="#94a3b8" strokeWidth="0.5"/>
-                      {/* 内部圆环装饰 */}
-                      <circle cx="140" cy="80" r="52" fill="none" stroke="#cbd5e1" strokeWidth="0.5" opacity="0.5"/>
-                      <circle cx="140" cy="80" r="46" fill="#0f172a" stroke="#1e293b" strokeWidth="1"/>
-                      {/* 中心显示屏 */}
-                      <circle cx="140" cy="80" r="36" fill="#020617" stroke="#1e293b" strokeWidth="0.5"/>
-                      {/* DNA螺旋图案 */}
-                      <path d="M122,58 Q155,78 122,98" fill="none" stroke="#22c55e" strokeWidth="0.8" opacity="0.6"/>
-                      <path d="M158,58 Q125,78 158,98" fill="none" stroke="#22c55e" strokeWidth="0.8" opacity="0.6"/>
-                      <path d="M122,65 Q152,80 122,95" fill="none" stroke="#22c55e" strokeWidth="0.5" opacity="0.3"/>
-                      <path d="M158,65 Q128,80 158,95" fill="none" stroke="#22c55e" strokeWidth="0.5" opacity="0.3"/>
-                      {/* 数据环 */}
-                      <circle cx="140" cy="80" r="40" fill="none" stroke="#22c55e" strokeWidth="1.5" strokeDasharray="16,8" opacity="0.5"/>
-                      <circle cx="140" cy="80" r="28" fill="none" stroke="#22c55e" strokeWidth="0.8" strokeDasharray="8,12" opacity="0.35"/>
-                      {/* 中心读数 */}
-                      <text x="140" y="78" textAnchor="middle" fill="#22c55e" fontSize="9" fontFamily="monospace" fontWeight="bold">实时推理</text>
-                      <text x="140" y="90" textAnchor="middle" fill="#22c55e" fontSize="7" fontFamily="monospace" opacity="0.6">STATUS: OK</text>
-                      {/* 顶部状态灯 */}
-                      <circle cx="140" cy="32" r="3" fill="#22c55e" opacity="0.8"/>
-                      {/* 品牌 */}
-                      <text x="140" y="30" textAnchor="middle" fill="#1e293b" fontSize="8" fontFamily="monospace" fontWeight="bold">YUANJI H</text>
-                      {/* 侧面接口 */}
-                      <rect x="62" y="70" width="8" height="4" rx="1" fill="#475569"/>
-                      <rect x="62" y="78" width="8" height="4" rx="1" fill="#475569"/>
-                    </svg>
-                  </div>
-
-                  <h3 className="text-2xl font-black text-white mb-1">YUANJI H</h3>
-                  <p className="text-xs text-green-400 font-mono mb-6">大健康专用终端</p>
-                  <ul className="space-y-3 mb-8 flex-1">
-                    {['医学生物知识图谱引擎', '蛋白质结构 AI 预测模型', '临床数据分析与报告生成', 'HIPAA 级数据安全合规'].map((feat, j) => (
-                      <li key={j} className="flex items-start gap-3 text-sm text-gray-400">
-                        <Check className="w-4 h-4 mt-0.5 shrink-0 text-green-400" />{feat}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="border-t border-white/10 pt-6">
-                    <div className="flex items-baseline gap-1 mb-6">
-                      <span className="text-3xl font-black text-white">¥59,999</span>
-                      <span className="text-xs text-gray-500">/ 台</span>
-                    </div>
-                    <button onClick={() => handleOpenReservation('YUANJI H')} className="w-full py-3 bg-gradient-to-r from-green-500 to-[#0a4b9c] text-white font-bold rounded-xl hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-all duration-300 active:scale-95">立即预定</button>
+                    </ul>
                   </div>
                 </div>
               </div>
