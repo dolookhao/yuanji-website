@@ -4,7 +4,7 @@ import {
   TrendingUp, Users, Lock, Server,
   Globe, Briefcase, Coins,
   Menu, X, ChevronRight, Terminal, Activity, ArrowRight, Check,
-  Phone, User, Building2, Send, CheckCircle2,
+  Phone, User, Building2, Send, CheckCircle2, QrCode,
   Target, Dna, BarChart4
 } from 'lucide-react';
 
@@ -289,6 +289,10 @@ export default function App() {
           @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+          }
+          @keyframes scan {
+            from { transform: translateY(0); }
+            to { transform: translateY(120px); }
           }
         `}
       </style>
@@ -1061,149 +1065,281 @@ export default function App() {
         </div>
       </section>
 
-          {/* CTA */}
-          <section className="py-24 relative border-t border-white/5">
-            <div className="absolute inset-0 bg-gradient-to-t from-[#00b4ff]/5 to-transparent"></div>
-            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-              <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
-                准备好拥有一台<br /><span className="text-[#00b4ff]">属于你自己的 AI 专家团队</span>了吗？
-              </h2>
-              <p className="text-lg text-gray-400 mb-10 max-w-xl mx-auto">
-                每一次工业革命都有一台标志性机器。AI 时代的这台，就在这里。
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button
-                  onClick={() => handleOpenReservation('')}
-                  className="px-10 py-4 bg-gradient-to-r from-[#00b4ff] to-[#0a4b9c] text-white font-bold rounded-xl hover:shadow-[0_0_40px_rgba(0,180,255,0.6)] transition-all duration-300 active:scale-95 text-lg"
-                >
-                  立即预定
-                </button>
-                <button className="px-10 py-4 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 hover:border-[#00b4ff]/30 transition-all duration-300 backdrop-blur-md">
-                  获取白皮书
-                </button>
-              </div>
-            </div>
-          </section>
-
-          {/* Footer */}
-          <footer className="border-t border-white/10 py-12 bg-[#050505]">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                <div className="flex items-center gap-2">
-                  <Logo className="h-6 w-auto" />
-                </div>
-                <div className="flex gap-6 text-sm text-gray-500">
-                  <button onClick={() => setActiveModal('privacy')} className="hover:text-white transition-colors">隐私政策</button>
-                  <button onClick={() => setActiveModal('terms')} className="hover:text-white transition-colors">服务条款</button>
-                  <span className="text-gray-700">|</span>
-                  <span>© 2026 元基智能 YUANJI.AI</span>
-                </div>
-              </div>
-            </div>
-          </footer>
+          {/* 重构行业生产力格局 CTA */}
+      <section className="py-24 relative overflow-hidden bg-gradient-to-r from-[#00b4ff] to-[#0a4b9c]">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-6">重构行业生产力格局</h2>
+          <p className="text-xl text-white/80 mb-10 font-medium">
+            用一台智能终端，成为企业的核心节点。共享 AI 生态红利。
+          </p>
+          <div className="flex justify-center">
+            <button
+              onClick={() => handleOpenReservation('尚未确定型号')}
+              className="px-8 py-4 bg-[#050505] text-white rounded-lg font-bold hover:bg-black transition-colors shadow-2xl flex justify-center items-center gap-2"
+            >
+              <Cpu className="w-5 h-5"/> 立刻预定 YUANJI
+            </button>
+          </div>
+        </div>
+      </section>
         </>
       ) : (
         <AboutPage />
       )}
 
-      {/* 预定弹窗 */}
-      {reservationModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]">
-          <div className="relative w-full max-w-md bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 shadow-2xl">
-            <button onClick={() => setReservationModalOpen(false)} className="absolute top-4 right-4 p-2 text-gray-500 hover:text-white transition-colors">
-              <X className="w-5 h-5" />
-            </button>
-
-            {!formSubmitted ? (
-              <>
-                <div className="mb-8 text-center">
-                  <div className="w-16 h-16 rounded-2xl bg-[#00b4ff]/10 border border-[#00b4ff]/20 flex items-center justify-center mx-auto mb-4">
-                    <Send className="w-8 h-8 text-[#00b4ff]" />
-                  </div>
-                  <h3 className="text-2xl font-black text-white">
-                    {reservationModel ? `预定 ${reservationModel}` : '预定 YUANJI 终端'}
-                  </h3>
-                  <p className="text-sm text-gray-400 mt-2">填写以下信息，我们将尽快与您联系</p>
-                </div>
-
-                <form onSubmit={handleFormSubmit} className="space-y-4">
-                  <div>
-                    <input type="text" placeholder="您的姓名" required className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#00b4ff]/50 transition-colors" />
-                  </div>
-                  <div>
-                    <input type="email" placeholder="电子邮箱" required className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#00b4ff]/50 transition-colors" />
-                  </div>
-                  <div>
-                    <input type="tel" placeholder="手机号码" className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-[#00b4ff]/50 transition-colors" />
-                  </div>
-                  {!reservationModel && (
-                    <div>
-                      <select defaultValue="" className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:outline-none focus:border-[#00b4ff]/50 transition-colors">
-                        <option value="" disabled className="bg-[#0a0a0a]">选择型号</option>
-                        <option value="T" className="bg-[#0a0a0a]">YUANJI T - 量化交易</option>
-                        <option value="M" className="bg-[#0a0a0a]">YUANJI M - 营销增长</option>
-                        <option value="H" className="bg-[#0a0a0a]">YUANJI H - 大健康</option>
-                      </select>
-                    </div>
-                  )}
-                  <button type="submit" className="w-full py-3.5 bg-gradient-to-r from-[#00b4ff] to-[#0a4b9c] text-white font-bold rounded-xl hover:shadow-[0_0_30px_rgba(0,180,255,0.5)] transition-all duration-300 active:scale-95">
-                    提交预定
-                  </button>
-                </form>
-              </>
-            ) : (
-              <div className="text-center py-8">
-                <div className="w-20 h-20 rounded-full bg-green-500/10 border border-green-500/20 flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle2 className="w-10 h-10 text-green-400" />
-                </div>
-                <h3 className="text-2xl font-black text-white mb-2">预定成功！</h3>
-                <p className="text-gray-400 text-sm mb-6">我们的团队将在 24 小时内与您联系</p>
-                <button onClick={() => setReservationModalOpen(false)} className="px-8 py-3 bg-white/5 border border-white/10 text-white font-bold rounded-xl hover:bg-white/10 transition-all">
-                  返回
-                </button>
-              </div>
-            )}
+      {/* Footer (全局共享) */}
+      <footer className="bg-[#050505] border-t border-white/10 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-12 flex flex-col items-center md:items-start text-center md:text-left">
+            <div className="flex items-center mb-6 cursor-pointer w-max mx-auto md:mx-0" onClick={() => handleNavigate('home')}>
+              <Logo className="h-8 md:h-10 w-auto" />
+            </div>
+            <p className="text-gray-400 max-w-md text-sm leading-relaxed">
+              全球行业级 AI 终端基础设施的开创者。为每一个垂直行业打造专属的 AI 专家矩阵，让算力成为核心资产。
+            </p>
           </div>
-        </div>
-      )}
 
-      {/* 隐私政策弹窗 */}
-      {activeModal === 'privacy' && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]">
-          <div className="relative w-full max-w-lg bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 shadow-2xl max-h-[80vh] overflow-y-auto">
-            <button onClick={() => setActiveModal(null)} className="absolute top-4 right-4 p-2 text-gray-500 hover:text-white transition-colors">
-              <X className="w-5 h-5" />
-            </button>
-            <h3 className="text-2xl font-black text-white mb-6">隐私政策</h3>
-            <div className="space-y-4 text-sm text-gray-400 leading-relaxed">
-              <p>元基智能（以下简称"我们"）深知数据隐私对您的重要性。本隐私政策说明了我们如何收集、使用和保护您的个人信息。</p>
-              <h4 className="text-white font-bold mt-4">1. 数据本地化</h4>
-              <p>所有 AI 推理计算在 YUANJI 终端本地完成。您的业务数据、用户数据绝不上传至云端，完全由您掌控。</p>
-              <h4 className="text-white font-bold mt-4">2. 信息收集</h4>
-              <p>我们仅收集设备激活、固件更新、服务优化所需的最小必要信息，包括设备 ID 和运行状态日志。</p>
-              <h4 className="text-white font-bold mt-4">3. 信息安全</h4>
-              <p>我们采用端到端加密、安全飞地（Secure Enclave）等业界领先技术保护您的数据。</p>
+          <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500 font-mono">
+            <p>© 2026 YUANJI INTELLIGENCE. ALL RIGHTS RESERVED.</p>
+            <div className="flex space-x-4">
+              <a href="#" onClick={(e) => { e.preventDefault(); setActiveModal('privacy'); }} className="hover:text-white transition-colors cursor-pointer">隐私政策</a>
+              <a href="#" onClick={(e) => { e.preventDefault(); setActiveModal('terms'); }} className="hover:text-white transition-colors cursor-pointer">服务条款</a>
             </div>
           </div>
         </div>
+      </footer>
+
+      {/* 预定意向收集弹窗 (Reservation Modal) */}
+      {reservationModalOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+          <div
+            className="absolute inset-0 bg-[#050505]/90 backdrop-blur-md cursor-pointer"
+            onClick={() => setReservationModalOpen(false)}
+          ></div>
+          <div className="relative w-full max-w-3xl bg-[#0a0a0a] border border-[#00b4ff]/30 rounded-2xl shadow-[0_0_50px_rgba(0,180,255,0.15)] flex flex-col md:flex-row overflow-hidden animate-[fadeIn_0.3s_ease-out]">
+
+            {/* 左侧：表单提交区 */}
+            <div className="w-full md:w-3/5 p-8 flex flex-col justify-center border-b md:border-b-0 md:border-r border-white/10 relative">
+              <button
+                onClick={() => setReservationModalOpen(false)}
+                className="absolute top-4 right-4 p-2 rounded-lg text-gray-500 hover:text-white hover:bg-white/5 md:hidden"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              {formSubmitted ? (
+                <div className="flex flex-col items-center justify-center text-center py-10 animate-[fadeIn_0.5s_ease-out]">
+                  <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mb-4">
+                    <CheckCircle2 className="w-8 h-8 text-green-500" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2">意向已提交</h3>
+                  <p className="text-gray-400">您的专属商务顾问将在 24 小时内与您联系，为您定制专属算力方案。</p>
+                  <button
+                    onClick={() => setReservationModalOpen(false)}
+                    className="mt-8 px-8 py-3 bg-white/5 hover:bg-white/10 text-white rounded-lg transition-colors"
+                  >
+                    关闭窗口
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <div className="mb-8">
+                    <h3 className="text-2xl font-bold text-white mb-2">预定咨询对接</h3>
+                    <p className="text-sm text-gray-400">YUANJI 系列终端当前采用定向邀约与定制化交付模式。请留下您的联系方式，我们将为您安排 1V1 专属顾问。</p>
+                  </div>
+
+                  <form onSubmit={handleFormSubmit} className="space-y-4">
+                    <div className="space-y-1">
+                      <label className="text-xs text-gray-500 font-medium ml-1">意向型号</label>
+                      <div className="relative">
+                        <Cpu className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#00b4ff]" />
+                        <select
+                          className="w-full bg-[#050505] border border-white/10 rounded-lg pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-[#00b4ff] appearance-none"
+                          value={reservationModel}
+                          onChange={(e) => setReservationModel(e.target.value)}
+                        >
+                          <option value="YUANJI T">YUANJI T (标准量化节点)</option>
+                          <option value="YUANJI T Pro">YUANJI T Pro (专业旗舰节点)</option>
+                          <option value="尚未确定型号">尚未确定，需要方案咨询</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-1">
+                        <label className="text-xs text-gray-500 font-medium ml-1">您的姓名</label>
+                        <div className="relative">
+                          <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                          <input type="text" required placeholder="如：张先生" className="w-full bg-[#050505] border border-white/10 rounded-lg pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-[#00b4ff] placeholder-gray-700" />
+                        </div>
+                      </div>
+                      <div className="space-y-1">
+                        <label className="text-xs text-gray-500 font-medium ml-1">联系电话</label>
+                        <div className="relative">
+                          <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                          <input type="tel" required placeholder="手机号码" className="w-full bg-[#050505] border border-white/10 rounded-lg pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-[#00b4ff] placeholder-gray-700" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <label className="text-xs text-gray-500 font-medium ml-1">所属机构/企业 (选填)</label>
+                      <div className="relative">
+                        <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
+                        <input type="text" placeholder="公司名称" className="w-full bg-[#050505] border border-white/10 rounded-lg pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-[#00b4ff] placeholder-gray-700" />
+                      </div>
+                    </div>
+
+                    <button type="submit" className="w-full mt-4 bg-gradient-to-r from-[#00b4ff] to-[#0a4b9c] hover:from-[#00b4ff] hover:to-[#00b4ff] text-white font-bold py-3.5 rounded-lg flex items-center justify-center gap-2 transition-all shadow-[0_0_15px_rgba(0,180,255,0.3)]">
+                      提交预定意向 <Send className="w-4 h-4" />
+                    </button>
+                  </form>
+                </>
+              )}
+            </div>
+
+            {/* 右侧：直接联系官方 (QR/Email) */}
+            <div className="w-full md:w-2/5 bg-[#050505] p-8 flex flex-col relative">
+              <button
+                onClick={() => setReservationModalOpen(false)}
+                className="absolute top-4 right-4 p-2 rounded-lg text-gray-500 hover:text-white hover:bg-white/5 hidden md:block"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="flex-1 flex flex-col justify-center items-center text-center">
+                <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mb-4">
+                  <QrCode className="w-6 h-6 text-gray-400" />
+                </div>
+                <h4 className="text-white font-bold mb-2">直接联系专属顾问</h4>
+                <p className="text-xs text-gray-400 mb-6 px-4">急需了解配置？可直接扫描下方二维码添加大客户经理企业微信。</p>
+
+                {/* 伪装的二维码区域 */}
+                <div className="w-36 h-36 bg-white p-2 rounded-lg mx-auto mb-6 relative group">
+                  <div className="w-full h-full border-2 border-dashed border-gray-300 flex flex-col items-center justify-center bg-gray-50">
+                     <QrCode className="w-10 h-10 text-gray-300 mb-1" />
+                     <span className="text-[10px] text-gray-400">微信扫一扫</span>
+                  </div>
+                  {/* 扫描动画光效 */}
+                  <div className="absolute top-2 left-2 right-2 h-0.5 bg-green-500 shadow-[0_0_10px_#22c55e] hidden group-hover:block animate-[scan_2s_linear_infinite]"></div>
+                </div>
+
+                <div className="w-full pt-4 border-t border-white/10 text-xs">
+                  <span className="text-gray-500 block mb-1">全球商务合作邮箱</span>
+                  <a href="mailto:business@yuanji.ai" className="text-[#00b4ff] hover:underline font-mono">business@yuanji.ai</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       )}
 
-      {/* 服务条款弹窗 */}
-      {activeModal === 'terms' && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-[fadeIn_0.2s_ease-out]">
-          <div className="relative w-full max-w-lg bg-[#0a0a0a] border border-white/10 rounded-3xl p-8 shadow-2xl max-h-[80vh] overflow-y-auto">
-            <button onClick={() => setActiveModal(null)} className="absolute top-4 right-4 p-2 text-gray-500 hover:text-white transition-colors">
-              <X className="w-5 h-5" />
-            </button>
-            <h3 className="text-2xl font-black text-white mb-6">服务条款</h3>
-            <div className="space-y-4 text-sm text-gray-400 leading-relaxed">
-              <p>使用元基智能产品和服务即表示您同意以下条款。请仔细阅读。</p>
-              <h4 className="text-white font-bold mt-4">1. 硬件所有权</h4>
-              <p>购买 YUANJI 终端即获得设备的完整物理所有权。设备内置的基础模型与操作系统使用权随设备永久授权。</p>
-              <h4 className="text-white font-bold mt-4">2. 软件更新</h4>
-              <p>我们持续为设备提供固件升级与模型迭代服务，确保您的终端始终保持行业前沿能力。</p>
-              <h4 className="text-white font-bold mt-4">3. 免责声明</h4>
-              <p>AI 模型输出仅供参考，不构成任何形式的专业建议。用户应独立验证关键决策依据。</p>
+      {/* 模态弹窗 (Legal Modals) */}
+      {activeModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+          <div
+            className="absolute inset-0 bg-[#050505]/80 backdrop-blur-sm cursor-pointer"
+            onClick={() => setActiveModal(null)}
+          ></div>
+          <div className="relative w-full max-w-4xl max-h-[85vh] bg-[#0a0a0a] border border-white/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden animate-[fadeIn_0.3s_ease-out]">
+            {/* Modal Header */}
+            <div className="flex justify-between items-center px-8 py-5 border-b border-white/10 bg-gradient-to-r from-[#050505] to-[#0a0a0a]">
+              <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                <Shield className="w-5 h-5 text-[#00b4ff]" />
+                {activeModal === 'privacy' ? '隐私政策 (Privacy Policy)' : '服务条款 (Terms of Service)'}
+              </h3>
+              <button
+                onClick={() => setActiveModal(null)}
+                className="p-2 rounded-lg bg-white/5 text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Body */}
+            <div className="p-8 overflow-y-auto custom-scrollbar text-sm text-gray-400 leading-relaxed space-y-6">
+              {activeModal === 'privacy' ? (
+                <>
+                  <p className="text-gray-300 font-medium">更新日期：2026年5月</p>
+                  <p>元基智能（YUANJI.AI，以下简称"我们"）深知数据隐私及商业机密对您的绝对重要性。作为全球行业级 AI 终端基础设施的开创者，我们产品的核心设计基石即是<strong className="text-[#00b4ff]">"数据绝对主权"</strong>。本政策将向您阐明我们如何处理设备与网络交互的信息。</p>
+
+                  <div className="space-y-2">
+                    <h4 className="text-white font-bold text-base">1. 本地化计算与数据物理隔离（核心承诺）</h4>
+                    <p>您在 YUANJI 硬件终端上运行的所有业务层数据（包括但不限于：量化交易策略代码、交易所 API 密钥、商业客户名单、大健康私人档案等）均在<strong className="text-white">设备本地算力环境内完成感知、推理与存储</strong>。我们绝不会将此类核心业务数据上传至云端服务器，我们也没有任何权限访问您的本地数据盘，您的核心资产仅由您自己掌控。</p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <h4 className="text-white font-bold text-base">2. 我们收集的必要网络与节点信息</h4>
+                    <p>为了维持 YUANJI 算力经济网络（Tokenomics）的正常运转及为您进行资产结算，我们仅在设备联网时收集以下脱敏遥测信息：</p>
+                    <ul className="list-disc pl-5 space-y-1 mt-2 text-gray-500">
+                      <li><strong className="text-gray-300">节点运行状态：</strong>设备在线时长（Uptime）、算力贡献值（Hashrate）、设备唯一序列号。</li>
+                      <li><strong className="text-gray-300">区块链与资产映射：</strong>您在控制台主动绑定的 Web3 钱包地址（仅用于接收 HTK 算力奖励）。</li>
+                      <li><strong className="text-gray-300">硬件基础指标：</strong>设备温度、CPU/内存负载状态（仅用于触发高温预警或硬件故障排查）。</li>
+                    </ul>
+                  </div>
+
+                  <div className="space-y-2">
+                    <h4 className="text-white font-bold text-base">3. 信息的用途与共享</h4>
+                    <p>上述收集的信息仅用于：计算并发放您的每日算力收益；进行系统级 OTA 固件升级与多 Agent 系统模型更新推送；维护整体分布式物理网络（DePIN）的安全与稳定。我们承诺，<strong className="text-white">绝不向任何第三方（包括双引擎资方）出售或共享您的任何节点信息与关联钱包数据</strong>。</p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <h4 className="text-white font-bold text-base">4. 您的权利</h4>
+                    <p>您有权随时在终端控制台断开网络连接，设备将转入纯本地离线计算模式（此时将停止产生 HTK 算力收益，但基础 AI 功能不受影响）。您也可以随时在链上解绑钱包地址或申请注销节点网络身份。</p>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <p className="text-gray-300 font-medium">更新日期：2026年5月</p>
+                  <p>欢迎使用元基智能及其生态网络。在购买、部署和启动 YUANJI 系列硬件终端之前，请您仔细阅读本服务条款。开机并接入算力网络即表示您同意受本条款约束。</p>
+
+                  <div className="space-y-2">
+                    <h4 className="text-white font-bold text-base">1. 服务定义与终端所有权</h4>
+                    <p>元基智能为您提供集"硬件实体 + 垂直赛道多 Agent 员工库 + 算力收益网络"于一体的综合基础设施。一旦您完成全款采购或预定并收到设备，该硬件实体的物理所有权即归您所有；但设备内搭载的 AI 核心算法与闭源操作系统许可权仍属于元基智能及技术提供方 TradingBase.AI。</p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <h4 className="text-white font-bold text-base">2. 用户行为与合规规范</h4>
+                    <ul className="list-disc pl-5 space-y-1 text-gray-500">
+                      <li>您需确保运行 YUANJI 终端及相关行业 Agent 所从事的业务（如营销获客、数据抓取）符合您所在国家或地区的法律法规。</li>
+                      <li><strong className="text-white">反向工程禁止：</strong>严禁通过任何物理或软件手段试图对设备的软硬件系统进行破解、反向编译、核心算法提取或仿制。一旦触发设备底层安全防护机制，设备将被永久锁定，且不在保修范围内。</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-4 bg-yellow-500/10 border border-yellow-500/20 rounded-lg space-y-2">
+                    <h4 className="text-yellow-500 font-bold text-base flex items-center gap-2">
+                      <Activity className="w-4 h-4" />
+                      3. 量化交易免责声明（特别提示）
+                    </h4>
+                    <p className="text-gray-300">针对 YUANJI T / T Pro 等内置量化交易专属 Agent 的型号：</p>
+                    <p className="text-gray-400 text-xs leading-normal">
+                      终端内置的 AI 策略与执行系统仅作为高度先进的"决策辅助与自动化执行工具"。金融与加密货币市场具有极高的不可预见性与波动风险。历史回测数据与模拟盘胜率绝不构成对未来真实收益的任何保证。<strong className="text-white">对于因极端黑天鹅事件、交易所 API 断联、网络延迟、或用户自行设定超出风险敞口的杠杆参数而导致的任何直接或间接投资亏损，元基智能概不负责，亦不承担任何连带赔偿责任。</strong>请在使用前确保您具备相应的风险承受能力。
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <h4 className="text-white font-bold text-base">4. 算力经济与数字资产声明</h4>
+                    <p>设备在线获取的算力凭证（HTK）受全网节点基数、难度炸弹及二级市场供需关系等多种宏观因素影响。元基智能不对 HTK 兑换法定货币的价格和流动性做任何绝对承诺。用户应自行关注并遵守当地关于数字加密资产及节点挖矿的监管政策。</p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <h4 className="text-white font-bold text-base">5. 售后支持与不可抗力</h4>
+                    <p>因地震、火灾、战争等不可抗力，或因全球性网络瘫痪、主要区块链网络分叉/停机导致算力经济模型中断，我们不承担违约责任。我们为硬件主体提供1年的标准质保服务。</p>
+                  </div>
+                </>
+              )}
+            </div>
+
+            {/* Modal Footer */}
+            <div className="px-8 py-4 border-t border-white/10 bg-[#050505] flex justify-end">
+              <button
+                onClick={() => setActiveModal(null)}
+                className="px-6 py-2 bg-gradient-to-r from-[#00b4ff] to-[#0a4b9c] text-white font-bold rounded-lg hover:shadow-[0_0_15px_rgba(0,180,255,0.4)] transition-all"
+              >
+                我已阅读并理解
+              </button>
             </div>
           </div>
         </div>
